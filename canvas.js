@@ -13,11 +13,14 @@ var mouse = {
 var maxRadius = 40;
 var minRadius = 2;
 
+var colorArray = ["#ffaa33", "#99ffaa", "#00ff00", "#4411aa", "#ff1100"];
+console.log(colorArray.length);
+
 window.addEventListener("mousemove", function(event) {
   // console.log("Listener");
   mouse.x = event.x;
   mouse.y = event.y;
-  console.log("mouse: ", mouse);
+  //console.log("mouse: ", mouse);
 });
 
 function Circle(x, y, dx, dy, radius) {
@@ -31,8 +34,7 @@ function Circle(x, y, dx, dy, radius) {
     // console.log("hi");
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    // c.strokeStyle = "blue";
-    // c.stroke();
+    c.fillStyle = colorArray[Math.floor(Math.random() * colorArray.length)];
     c.fill();
   };
 
