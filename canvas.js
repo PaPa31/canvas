@@ -10,6 +10,9 @@ var mouse = {
   y: undefined
 };
 
+var maxRadius = 40;
+var minRadius = 2;
+
 window.addEventListener("mousemove", function(event) {
   // console.log("Listener");
   mouse.x = event.x;
@@ -28,9 +31,9 @@ function Circle(x, y, dx, dy, radius) {
     // console.log("hi");
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.strokeStyle = "blue";
-    c.stroke();
-    // c.fill();
+    // c.strokeStyle = "blue";
+    // c.stroke();
+    c.fill();
   };
 
   this.update = function() {
@@ -52,10 +55,10 @@ function Circle(x, y, dx, dy, radius) {
       mouse.y - this.y < 50 &&
       mouse.y - this.y > -50
     ) {
-      if (this.radius < 40) {
+      if (this.radius < maxRadius) {
         this.radius += 1;
       }
-    } else if (this.radius > 2) {
+    } else if (this.radius > minRadius) {
       this.radius -= 1;
     }
 
